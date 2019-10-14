@@ -132,6 +132,34 @@
     // 修改个人信息
     $('#submit').on('click', function () {
 
+      var fd = new FormData($('form')[0]);
+      if (
+        fd.get('username').trim() === '' ||
+        fd.get('password').trim() === '' ||
+        fd.get('nickname').trim() === '' ||
+        fd.get('email').trim() === '' ||
+        fd.get('user_pic').size === 0
+      ) {
+        $('#myModal').modal('show');
+        return;
+      }
+
+      // console.log('请求发送');
+      user.getEdit({
+        data: fd,
+        success: function (res) {
+          // console.log(res);
+          if (res.code === 200) {
+            parent.location.href = './login.html';
+          }
+        }
+      })
+    })
+
+    // 本地图片预览
+    $('#user_pic').on('change', function () {
+      var tempSrc = URL.createObjectURL(this.files[0]);
+      $('#avatar').prop('src', tempSrc);
     })
   </script>
 </body>

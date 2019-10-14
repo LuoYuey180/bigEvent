@@ -34,5 +34,16 @@ var user = {
       url: USER_INFO_GET,
       success: options.success
     })
+  },
+  //修改个人信息
+  getEdit: function (options) {
+    $.ajax({
+      type: 'post',
+      url: USER_INFO_EDIT,
+      data: options.data,
+      contentType: false,
+      processData: false,
+      success: options.success
+    })
   }
 }
