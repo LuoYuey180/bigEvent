@@ -12,5 +12,27 @@ var user = {
       data: options.data,
       success: options.callback
     })
+  },
+  //用户退出
+  logout: function (options) {
+    $.ajax({
+      type: 'post',
+      url: USER_LOGOUT,
+      success: options.callback
+    })
+  },
+  //获取用户信息
+  getInfo: function (options) {
+    $.ajax({
+      url: USER_INFO,
+      success: options.callback
+    })
+  },
+  // 个人信息页面
+  getInformation: function (options) {
+    $.ajax({
+      url: USER_INFO_GET,
+      success: options.success
+    })
   }
 }
