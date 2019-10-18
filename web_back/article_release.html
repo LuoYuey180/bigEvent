@@ -10,11 +10,27 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/iconfont.css">
   <link rel="stylesheet" href="css/main.css">
-  <link type="text/css" rel="stylesheet" href="js/jedate/css/jedate.css">
+  <!-- <link type="text/css" rel="stylesheet" href="js/jedate/css/jedate.css"> -->
   <script src="js/jquery-1.12.4.min.js"></script>
-  <script src="js/jedate/js/jedate.js"></script>
+  <!-- <script src="js/jedate/js/jedate.js"></script> -->
   <script src="js/tinymce/js/tinymce/tinymce.min.js"></script>
   <script src="js/tinymce/js/tinymce_setup.js"></script>
+  <!-- 引入jeDate的css文件 -->
+  <link rel="stylesheet" href="../web_back/jedate-6.5.0/skin/jedate.css">
+  <!-- 引入jeDate的js文件 -->
+  <script src="../web_back/jedate-6.5.0/src/jedate.js"></script>
+  <!-- 引入tinymce主文件 -->
+  <script src="../web_back/js/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+  <!-- 引入tinymce--setup.js配置文件 -->
+  <script src="../web_back/js/tinymce/js/tinymce_setup.js"></script>
+  <!--
+    内容的获取方式：
+    1、单个富文本编辑器
+      tinyMCE.activeEditor.getContent();
+    2、多个富文本编辑
+      tinyMCE.editors[0].getContent();
+      索引位置可以修改
+     -->
 </head>
 
 <body>
@@ -53,11 +69,11 @@
           <div class="col-sm-4">
 
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
+              <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput" readonly>
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button"
-                  onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
-                    class="iconfont icon-icondate"></i></button>
+                <button class="btn btn-default" type="button" id="riQi">
+                  <i class="iconfont icon-icondate"></i>
+                </button>
               </span>
             </div>
           </div>
@@ -65,14 +81,18 @@
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
           <div class="col-sm-10">
-            <textarea class="form-control" id="rich_content" name="content" placeholder="文章内容">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
-                            </textarea>
+            <textarea class="form-control rich_content" name="content" placeholder="文章内容">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
+            </textarea>
+            <textarea class="form-control rich_content" name="content" placeholder="文章内容">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
+              </textarea>
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">发布</button>
+            <button type="button" class="btn btn-success" id="btn">发布</button>
+            <!-- <button type="submit" class="btn btn-success">发布</button> -->
             <button type="submit" class="btn btn-default">存为草稿</button>
           </div>
         </div>
@@ -80,6 +100,31 @@
     </div>
   </div>
 
+
+  <script>
+    $('#riQi').on('click', function () {
+      jeDate('#dateinput', {
+        trigger: false,
+        format: "YYYY-MM-DD",
+      })
+    });
+
+    /*     内容的获取方式：
+        1、单个富文本编辑器
+          tinyMCE.activeEditor.getContent();
+        2、多个富文本编辑
+          tinyMCE.editors[0].getContent();
+          索引位置可以修改 */
+    $('#btn').on('click', function () {
+      // 单个富文本编辑器
+      // console.log(tinyMCE.activeEditor.getContent());
+
+      // 目前是多个富文本编辑
+      // 多个富文本编辑器
+      // console.log(tinyMCE.editors[0].getContent());
+      // console.log(tinyMCE.editors[1].getContent());
+    })
+  </script>
 </body>
 
 </html>

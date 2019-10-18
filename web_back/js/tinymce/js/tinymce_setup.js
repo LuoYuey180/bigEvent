@@ -1,22 +1,22 @@
 tinymce.init({
     //选择class为content的标签作为编辑器
-    selector: '#rich_content',
+    selector: '.rich_content',
     //方向从左到右
-    directionality:'ltr',
+    directionality: 'ltr',
     //语言选择中文
-    language:'zh_CN',
+    language: 'zh_CN',
     //高度为400
-    height:300,
+    height: 300,
     width: '100%',
     //工具栏上面的补丁按钮
     plugins: [
-            'advlist autolink link image lists charmap preview hr anchor pagebreak spellchecker',
-            'searchreplace wordcount visualblocks visualchars code insertdatetime nonbreaking',
-            'save table contextmenu directionality template paste textcolor',
-            'codesample imageupload',
+        'advlist autolink link image lists charmap preview hr anchor pagebreak spellchecker',
+        'searchreplace wordcount visualblocks visualchars code insertdatetime nonbreaking',
+        'save table contextmenu directionality template paste textcolor',
+        'codesample imageupload',
     ],
     //工具栏的补丁按钮
-     toolbar: 'insertfile undo redo | \
+    toolbar: 'insertfile undo redo | \
      styleselect | \
      bold italic | \
      alignleft aligncenter alignright alignjustify | \
